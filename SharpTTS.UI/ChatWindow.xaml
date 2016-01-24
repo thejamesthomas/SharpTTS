@@ -1,0 +1,23 @@
+﻿<Window x:Class="SharpTTS.UI.ChatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="ChatWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="26"/>
+        </Grid.RowDefinitions>
+        <ToolBarTray>
+            <ToolBar>
+                <ComboBox Name="VoiceComboBox" ItemsSource="{Binding _voices}" DisplayMemberPath="VoiceInfo.Name"></ComboBox>
+                <ComboBox Name="OutputComboBox" ItemsSource="{Binding _outputs}" DisplayMemberPath=""></ComboBox>
+            </ToolBar>
+        </ToolBarTray>
+        <TextBox Name="MessageTextBox" Grid.Row="1" Margin="4,4,4,4" SpellCheck.IsEnabled="true" TextWrapping="Wrap" />
+        <Button Name="SendButton" Content="Send" Grid.Row="2" Margin="4,4,4,4" />
+    </Grid>
+</Window>
