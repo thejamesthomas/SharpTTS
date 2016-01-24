@@ -1,4 +1,4 @@
-# SharpTTS
+# SharpTTS (Status: Not Functional)
 A tool I'm writing for a friend of mine to easily allow the use of text to speech synthesized voices in applications like Skype.
 
 ##Requirements:
