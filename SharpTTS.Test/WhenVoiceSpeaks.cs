@@ -1,7 +1,7 @@
 ﻿using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
-using ItToo = Moq.It;
+using static Moq.It;
 
 // ReSharper disable InconsistentNaming
 // ReSharper disable ArrangeTypeMemberModifiers
@@ -14,8 +14,8 @@ namespace SharpTTS.Test
     {
         Establish context = () =>
         {
-            MockSpeechSynthesizerWrapper = new Mock<SpeechSynthesizerWrapper>();
-            MockSpeechSynthesizerWrapper.Setup(s => s.Speak(ItToo.IsAny<string>()));
+            MockSpeechSynthesizerWrapper = new Mock<SpeechSynthesizerWrapper>(Given.AWaveStream());
+            MockSpeechSynthesizerWrapper.Setup(s => s.Speak(IsAny<string>()));
 
             Subject = new Voice(MockSpeechSynthesizerWrapper.Object);
         };
@@ -23,7 +23,7 @@ namespace SharpTTS.Test
         Because of = () => Subject.Speak("Hello people!");
 
         It should_save_the_last_message = () => Subject.LastMessage.ShouldEqual("Hello people!");
-        private It should_invoke_the_speech_synthesizer = () => MockSpeechSynthesizerWrapper.Verify(s => s.Speak("Hello people!"), Times.Once);
+        It should_invoke_the_speech_synthesizer = () => MockSpeechSynthesizerWrapper.Verify(s => s.Speak("Hello people!"), Times.Once);
 
         static Voice Subject;
         private static Mock<SpeechSynthesizerWrapper> MockSpeechSynthesizerWrapper;

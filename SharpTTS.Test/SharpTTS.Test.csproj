@@ -49,6 +49,9 @@
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NAudio">
+      <HintPath>..\packages\NAudio.1.7.3\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Speech" />
@@ -60,6 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Given.cs" />
+    <Compile Include="WhenSpeechSyntesizerWrapperSpeaks.cs" />
     <Compile Include="WhenVoiceSpeaks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
