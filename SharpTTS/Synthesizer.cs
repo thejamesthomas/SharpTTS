@@ -14,9 +14,8 @@ namespace SharpTTS
         
         public Stream Stream { get; private set; }
 
-        public Synthesizer(SynthesizerVoice synthesizerVoice)
+        public Synthesizer()
         {
-            SelectVoice(synthesizerVoice);
         }
 
         public void SelectVoice(SynthesizerVoice synthesizerVoice)

@@ -17,10 +17,10 @@ namespace SharpTTS.Test
         {
             MockWaveOut = new Mock<IWavePlayer>();
             MockWaveOut.Setup(w => w.PlaybackState).Returns(PlaybackState.Playing);
+            
+            MockSynthesizerVoice = new Mock<SynthesizerVoice>(null);
 
-            MockVoiceInfo = new Mock<VoiceInfo>();
-
-            Subject = new Voice(MockWaveOut.Object, new SynthesizerVoice(MockVoiceInfo.Object));
+            Subject = new Voice(MockWaveOut.Object);
         };
 
         Because of = () => Subject.Speak("Hello people!");
@@ -30,6 +30,6 @@ namespace SharpTTS.Test
 
         static Voice Subject;
         static Mock<IWavePlayer> MockWaveOut;
-        static Mock<VoiceInfo> MockVoiceInfo;
+        static Mock<SynthesizerVoice> MockSynthesizerVoice;
     }
 }

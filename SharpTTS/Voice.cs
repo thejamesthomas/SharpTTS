@@ -5,14 +5,14 @@ namespace SharpTTS
     public class Voice
     {
         private readonly Synthesizer _synthisizer;
-        private readonly IWavePlayer _outputDevice;
+        private IWavePlayer _outputDevice;
 
         public string LastMessage { get; set; }
 
-        public Voice(IWavePlayer outputDevice, SynthesizerVoice synthesizerVoice)
+        public Voice(IWavePlayer outputDevice)
         {
             _outputDevice = outputDevice;
-            _synthisizer = new Synthesizer(synthesizerVoice);
+            _synthisizer = new Synthesizer();
         }
 
         public void Speak(string message)
@@ -33,6 +33,11 @@ namespace SharpTTS
         public void SelectVoice(SynthesizerVoice synthesizerVoice)
         {
             _synthisizer.SelectVoice(synthesizerVoice);
+        }
+
+        public void SelectOutput(OutputDevice outputDevice)
+        {
+            _outputDevice = new WaveOut { DeviceNumber = outputDevice.DeviceNumber };
         }
     }
 }

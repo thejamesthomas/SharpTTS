@@ -20,7 +20,7 @@ namespace SharpTTS.Test
             MockWaveOut = new Mock<IWavePlayer>();
             MockVoiceInfo = new Mock<VoiceInfo>();
 
-            Subject = new Voice(MockWaveOut.Object, new SynthesizerVoice(MockVoiceInfo.Object));
+            Subject = new Voice(MockWaveOut.Object);
         };
 
 
