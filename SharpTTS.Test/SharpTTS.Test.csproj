@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Given.cs" />
-    <Compile Include="WhenSpeechSyntesizerWrapperSpeaks.cs" />
+    <Compile Include="WhenVoiceSpeaksWhileAlreadySpeaking.cs" />
     <Compile Include="WhenVoiceSpeaks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

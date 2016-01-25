@@ -4,8 +4,6 @@ using Moq;
 using NAudio.Wave;
 using It = Machine.Specifications.It;
 
-using static Moq.It;
-
 // ReSharper disable InconsistentNaming
 // ReSharper disable ArrangeTypeMemberModifiers
 // ReSharper disable UnusedMember.Local
@@ -13,23 +11,22 @@ using static Moq.It;
 namespace SharpTTS.Test
 {
     [Subject(typeof(Voice))]
-    public class WhenVoiceSpeaks
+    public class WhenVoiceSpeaksWhileAlreadySpeaking
     {
         Establish context = () =>
         {
             MockWaveOut = new Mock<IWavePlayer>();
+            MockWaveOut.Setup(w => w.PlaybackState).Returns(PlaybackState.Playing);
+
             MockVoiceInfo = new Mock<VoiceInfo>();
 
             Subject = new Voice(MockWaveOut.Object, new SynthesizerVoice(MockVoiceInfo.Object));
         };
 
-
-
         Because of = () => Subject.Speak("Hello people!");
 
-        It should_save_the_last_message = () => Subject.LastMessage.ShouldEqual("Hello people!");
-        It should_init_the_wave_out = () => MockWaveOut.Verify(w => w.Init(IsAny<IWaveProvider>()), Times.Once);
-        It should_invoke_the_wave_out = () => MockWaveOut.Verify(w => w.Play(), Times.Once);
+        It should_stop_playback = () => MockWaveOut.Verify(w => w.Stop(), Times.Once);
+        It should_not_invoke_the_wave_out = () => MockWaveOut.Verify(w => w.Play(), Times.Never);
 
         static Voice Subject;
         static Mock<IWavePlayer> MockWaveOut;

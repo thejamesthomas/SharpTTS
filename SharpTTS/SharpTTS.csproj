@@ -47,7 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SpeechSynthesizerWrapper.cs" />
+    <Compile Include="Synthesizer.cs" />
+    <Compile Include="SynthesizerVoice.cs" />
     <Compile Include="Voice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
