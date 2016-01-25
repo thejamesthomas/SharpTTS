@@ -20,8 +20,8 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             
-            <ComboBox Grid.Column="0" Name="VoiceComboBox" DisplayMemberPath="Name"/>
-            <ComboBox Grid.Column="1"  Name="OutputComboBox" DisplayMemberPath=""/>
+            <ComboBox Grid.Column="0" Name="VoiceComboBox"/>
+            <ComboBox Grid.Column="1" Name="OutputComboBox"/>
         </Grid>
         <TextBox Name="MessageTextBox" Grid.Row="1" Margin="4,4,4,4" SpellCheck.IsEnabled="true" TextWrapping="Wrap" />
         <Button Name="SendButton" Content="Send" Grid.Row="2" Margin="4,4,4,4" />
