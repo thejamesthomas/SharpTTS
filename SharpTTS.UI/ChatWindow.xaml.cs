@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using NAudio.Wave;
 
@@ -24,6 +25,7 @@ namespace SharpTTS.UI
 
             VoiceComboBox.ItemsSource = _voices;
             VoiceComboBox.DisplayMemberPath = "Name";
+            VoiceComboBox.SelectionChanged += VoiceComboBox_SelectionChanged;
 
             _outputs = OutputDevice.GetInstalledOutputDevices();
             OutputComboBox.ItemsSource = _outputs;
@@ -33,7 +35,12 @@ namespace SharpTTS.UI
             MessageTextBox.KeyUp += MessageTextBox_KeyUp;
         }
 
-        private void MessageTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        private void VoiceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _voice.SelectVoice(e.AddedItems[0] as SynthesizerVoice);
+        }
+
+        private void MessageTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key != Key.Enter) return;
 

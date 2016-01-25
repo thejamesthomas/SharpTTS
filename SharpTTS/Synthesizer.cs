@@ -1,5 +1,3 @@
-using System;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Speech.AudioFormat;
 using System.Speech.Synthesis;
@@ -17,6 +15,11 @@ namespace SharpTTS
         public Stream Stream { get; private set; }
 
         public Synthesizer(SynthesizerVoice synthesizerVoice)
+        {
+            SelectVoice(synthesizerVoice);
+        }
+
+        public void SelectVoice(SynthesizerVoice synthesizerVoice)
         {
             _speechSynthesizer.SelectVoice(synthesizerVoice.Name);
         }

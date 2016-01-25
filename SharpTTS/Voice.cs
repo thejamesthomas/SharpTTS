@@ -29,5 +29,10 @@ namespace SharpTTS
             _outputDevice.Init(new RawSourceWaveStream(_synthisizer.Stream, new WaveFormat()));
             _outputDevice.Play();
         }
+
+        public void SelectVoice(SynthesizerVoice synthesizerVoice)
+        {
+            _synthisizer.SelectVoice(synthesizerVoice);
+        }
     }
 }
